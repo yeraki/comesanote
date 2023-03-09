@@ -1,0 +1,50 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="menu-content" when="xs" [disabled]="true">
+    <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">
+      <ion-header>
+
+      </ion-header>
+      
+      <ion-content>
+        <ion-item >
+             <ion-avatar id="user-avatar">
+              <img [src]="fotoUser">
+            </ion-avatar>
+            
+            <ion-note id="user-note">{{userdetail}}</ion-note>
+          
+            <ion-button type="submit" id="logout" (click)="goLoginPage()" fill="clear">
+              
+              <ion-icon src="../../assets/logout.svg" slot="end" id="logout-icon"></ion-icon>
+            </ion-button>
+
+            </ion-item> 
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon" [md]="p.icon"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+              <ion-icon slot="end" name="chevron-forward-sharp"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+          
+          <ion-item color="success" *ngIf="rol" routerLink="/all-pro" lines="none" routerLinkActive="selected" id="admin1">
+            <ion-icon slot="start" ios="add-circle-sharp" md="add-circle-sharp" id="admin2"></ion-icon>
+            <ion-label id="admin3">Crear Producto</ion-label>
+            <ion-icon slot="end" name="chevron-forward-sharp" id="admin2"></ion-icon>
+          </ion-item>
+          <ion-item color="success" *ngIf="rol" routerLink="" lines="none" routerLinkActive="selected" id="admin1">
+            <ion-icon slot="start" ios="add-circle-sharp" md="add-circle-sharp" id="admin2"></ion-icon>
+            <ion-label id="admin3">Crear Promo</ion-label>
+            <ion-icon slot="end" name="chevron-forward-sharp" id="admin2"></ion-icon>
+          </ion-item>
+            
+
+        
+        
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

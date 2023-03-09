@@ -1,0 +1,129 @@
+<ion-header class="ion-no-border" style="background:#F4FAF6;">
+  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button menu="menu-content">
+      <ion-menu-toggle>
+        <img src='/../assets/LOGO icono.png' class="icono">
+    </ion-menu-toggle>
+    </ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar  placeholder="Buscar Producto" showCancelButton="focus"
+    animated="true" mode="ios" style="padding: 16px 0px; width: 320px;"></ion-searchbar>
+    
+    
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div>
+        <ion-button class="button2" (click)="nuevo()">+</ion-button>
+        <ion-button class="button2" (click)="enableNewProduct = false;
+        ">-</ion-button>
+      </div>
+  <div class="background-filter">
+<div *ngIf="enableNewProduct">
+     
+    <ion-card class="card1">
+     
+      <ion-card-header>
+        <ion-card-subtitle class="subtitle1">
+          Añadir Producto
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+         <ion-item class="item1">
+          <ion-label position="fixed">Nombre</ion-label>
+          <ion-input [(ngModel)]="newPro.name" class="input1"></ion-input>
+         </ion-item>
+         <ion-item class="item1">
+          <ion-label position="fixed" >Variedad</ion-label>
+          <ion-input [(ngModel)]="newPro.variedad" class="input1"></ion-input>
+         </ion-item>
+         <ion-list>
+          <ion-item class="item1">
+            <ion-label position="fixed">Categoría</ion-label>
+            <ion-select interface="action-sheet" placeholder="Seleccionar" [(ngModel)]="newPro.category">
+              <ion-select-option value="Raíces">Raíces</ion-select-option>
+              <ion-select-option value="Tubérculo">Tubérculo</ion-select-option>
+              <ion-select-option value="Bulbos">Bulbos</ion-select-option>
+              <ion-select-option value="Tallos">Tallos</ion-select-option>
+              <ion-select-option value="Rizomas">Rizomas</ion-select-option>
+              <ion-select-option value="Hojas">Hojas</ion-select-option>
+              <ion-select-option value="Inflorescencias">Inflorescencias</ion-select-option>
+              <ion-select-option value="Fruto">Frutos</ion-select-option>
+              <ion-select-option value="Semillas">Semillas</ion-select-option>
+              <ion-select-option value="Frutas ácidas">Frutas ácidas</ion-select-option>
+              <ion-select-option value="Frutas semiácidas">Frutas semiácidas</ion-select-option>
+              <ion-select-option value="Frutas neutras">Frutas neutras</ion-select-option>
+              <ion-select-option value="Frutas dulces">Frutas dulces</ion-select-option>
+              <ion-select-option value="Frutos secos">Frutos secos</ion-select-option>
+            </ion-select>
+          </ion-item >
+        </ion-list>
+        <ion-item class="item1">
+          <ion-label position="fixed">PVP (€)</ion-label>
+          <ion-input type="number"[(ngModel)]="newPro.pvp" class="input1"></ion-input>
+         </ion-item>
+         <ion-item class="item1">
+          <ion-label position="fixed">Coste (€)</ion-label>
+          <ion-input type="number"[(ngModel)]="newPro.pvd" class="input1"></ion-input>
+         </ion-item>
+         <ion-item class="item1">
+          <ion-label position="fixed">Stock (Kg)</ion-label>
+          <ion-input type="number"[(ngModel)]="newPro.Stock" class="input1"></ion-input>
+         </ion-item>
+
+
+         <ion-item class="item1">
+        <div class="thumb1"></div>
+          <ion-thumbnail slot="start" class="thumb1">
+            <img alt="" [src]="newImage"/>
+          </ion-thumbnail>
+          
+          <ion-button fill="outline" class="button3" >
+            <label for="file-upload">Agregar Foto
+            <ion-icon slot="end" name="image-outline"></ion-icon>
+            </label>
+              <input (change)="nImage($event)" id="file-upload" style="display:none" type="file" accept="image/*">
+            </ion-button>
+          
+          
+         </ion-item>
+
+          
+
+        <div class="bottom-section">
+  
+        <ion-button class="button4" (click)="save()" >Guardar</ion-button>
+          
+
+        </div>
+         
+      </ion-card-content>
+</ion-card>
+        
+       
+</div>
+    
+    
+  
+<ion-item *ngFor="let producto of listado">
+
+    <ion-label>{{producto.name}}</ion-label>
+  <ion-buttons>
+    <ion-button class="button icon create-sharp" (click)="newPro = producto; enableNewProduct=true;">
+      <ion-icon slot="icon-only" name="create-sharp" ></ion-icon>
+    </ion-button>
+    <ion-button class="new2" (click)="deleteProducto(producto)">
+      <ion-icon slot="icon-only" color="danger "name="trash-sharp" ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+</ion-item> 
+ 
+</div>
+
+
+</ion-content>

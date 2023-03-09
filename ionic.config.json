@@ -1,0 +1,7 @@
+{
+  "name": "comesano",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

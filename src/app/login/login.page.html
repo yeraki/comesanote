@@ -1,0 +1,59 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+  <div class="background-pic">
+     <div class="background-filter">
+       
+
+       <ion-card>
+        <img src="../../assets/Logo1.png" />
+         <ion-card-header>
+           <ion-card-title>
+            Si no cuidas tu cuerpo ¿Dónde vas a vivir?
+           </ion-card-title>
+           <ion-card-subtitle>
+             Iniciar Sesión
+           </ion-card-subtitle>
+         </ion-card-header>
+         <ion-card-content>
+            <ion-item>
+             <ion-input placeholder="Correo Electrónico" formControlName="email"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message"
+          *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+            <ion-item>
+              <ion-input placeholder="Contraseña" type="password" formControlName="password" class="form-controll" required></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.password">
+                <div class="error-message"
+                  *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+
+            
+
+            <div class="bottom-section">
+              <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Iniciar Sesión</ion-button>
+              <label class="error-message">{{errorMessage}}</label>
+              <span> ¿No tienes Cuenta? <a href="http://localhost:8100/signup"> Regístrate</a></span>
+
+              
+            </div>
+            <a href="http://localhost:8100/fogotpassword">Recordar Contraseña</a>
+         </ion-card-content>
+       </ion-card>
+     </div>
+  </div>
+</form>
+</ion-content>

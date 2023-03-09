@@ -1,0 +1,63 @@
+
+ion-content{
+    --ion-background-color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.background-container{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background: url('../../assets/avocadogif.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+ion-card{
+ text-align: center;
+ background: transparent;
+ box-shadow: none;
+
+ img{
+     margin-top: 110px;
+     height: 7rem;
+     width: 7.2rem;
+ }
+ ion-card-title{
+     font-size: 20px;
+     color: #446b01;
+     font-weight: 500;
+
+ }
+
+
+ ion-card-content{
+  margin-top: 520px;
+
+  ion-button{
+    height: 40px;
+    width: 160px;
+      --border-radius: 40px;
+      --background: #14ac1b;
+      color:#fff;
+      font-weight: 400;
+      text-transform: none;
+      font-size: 20px;
+  }
+ }
+}
+
+@media screen and (min-width:500px){
+    .background-filter{
+        height: 100%;
+        width: 100%;
+        background: rgba(39,92,60,0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

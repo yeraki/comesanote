@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border" style="background:#F4FAF6;">
+  
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+    <ion-menu-button menu="menu-content">
+      <ion-menu-toggle>
+        <img src='/../assets/LOGO icono.png' class="icono">
+    </ion-menu-toggle>
+    </ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar  [(ngModel)]="filter"
+                    placeholder="Buscar Producto"
+                    mode="ios" 
+                    style="padding: 16px 0px;"
+                    showCancelButton="focus"
+                    animated="true" ></ion-searchbar>
+
+    <ion-buttons slot="end">
+      <ion-icon name="cart" style="color: limegreen;" class="cesta"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" hidden="true">
+      <app-notification-bell></app-notification-bell>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+      <ion-slides pager="true" [options]="slideOpts" *ngIf="bannerImages && bannerImages.length">
+        <ion-slide *ngFor="let image of bannerImages">  
+          <img class="banner-image" [src]="image?.imgurl || 'assets/imgs/divisions.svg'"/>
+        </ion-slide>
+      </ion-slides>
+    
+      <ion-grid>
+        <ion-row class="ion-justify-content-between ion-padding-vertical">
+          <ion-col size="4">
+            <div class="font-bold">
+              Más Vendidos
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="item1">
+              <ion-list>
+                <ion-item >
+                  
+                  <ion-select interface="action-sheet" [(ngModel)]="filter" placeholder="Filtrar">
+                    <ion-select-option value="">Filtrar</ion-select-option>
+                    <ion-select-option value="Raíces">Raíces</ion-select-option>
+                    <ion-select-option value="Tubérculo">Tubérculo</ion-select-option>
+                    <ion-select-option value="Bulbos">Bulbos</ion-select-option>
+                    <ion-select-option value="Tallos">Tallos</ion-select-option>
+                    <ion-select-option value="Rizomas">Rizomas</ion-select-option>
+                    <ion-select-option value="Hojas">Hojas</ion-select-option>
+                    <ion-select-option value="Inflorescencias">Inflorescencias</ion-select-option>
+                    <ion-select-option value="Fruto">Frutos</ion-select-option>
+                    <ion-select-option value="Semillas">Semillas</ion-select-option>
+                    <ion-select-option value="Frutas ácidas">Frutas ácidas</ion-select-option>
+                    <ion-select-option value="Frutas semiácidas">Frutas semiácidas</ion-select-option>
+                    <ion-select-option value="Frutas neutras">Frutas neutras</ion-select-option>
+                    <ion-select-option value="Frutas dulces">Frutas dulces</ion-select-option>
+                    <ion-select-option value="Frutos secos">Frutos secos</ion-select-option>
+                  </ion-select>
+                </ion-item >
+              </ion-list>
+          
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" size-lg="3" size-md="4" *ngFor="let producto of listado | filter:filter">
+            <ion-card class="ion-no-margin">
+              <img class="imgcec " [src]="producto.imgurl || 'assets/imgs/divisions.svg'">
+              <ion-card-header>
+                <ion-card-subtitle>{{ producto.category }}</ion-card-subtitle>
+                <ion-card-title class="font-size-1">{{ producto.name }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <div class="ion-color-dark">{{ producto.pvp }}€/KG</div>
+                <div>
+        <ion-buttons>
+            <ion-button class="new1" >
+              <img src='/../assets/libro-de-recetas2.png' class="icono2">
+            </ion-button>
+            <ion-button class="new2" (click)="addToCartModal(producto)">
+              <img src='/../assets/add-to-cart2.png' class="icono3" >
+            </ion-button>
+          </ion-buttons>
+        </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+</ion-content>
