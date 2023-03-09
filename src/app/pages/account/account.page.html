@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border" style="background:#F4FAF6;">
+  
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+    <ion-menu-button menu="menu-content">
+      <ion-menu-toggle>
+        <img src='/../assets/LOGO icono.png' class="icono">
+    </ion-menu-toggle>
+    </ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar  placeholder="Buscar Producto" mode="ios" style="padding: 16px 0px;"></ion-searchbar>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <div class="background-filter">
+             
+        <ion-card class="card1">
+         
+          <ion-card-header>
+            <ion-card-subtitle class="subtitle1">
+              Mi Cuenta
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ng-container>
+          
+          <ion-card-content>
+              <div>
+             <ion-item class="item1">
+              <ion-label position="fixed">Nombre</ion-label>
+              <ion-input [(ngModel)]="newUser.name" class="input1"></ion-input>
+             </ion-item>
+
+             <ion-item class="item1">
+              <ion-label position="fixed" >Apellidos</ion-label>
+              <ion-input [(ngModel)]="newUser.surname" class="input1"></ion-input>
+             </ion-item>
+            
+
+            <ion-item class="item1">
+              <ion-label position="fixed">Dirección</ion-label>
+              <ion-input [(ngModel)]="newUser.address" class="input1"></ion-input>
+             </ion-item>
+
+             <ion-item class="item1">
+              <ion-label position="fixed">Teléfono</ion-label>
+              <ion-input type="number"[(ngModel)]="newUser.tlf" class="input1"></ion-input>
+             </ion-item>
+       
+             <ion-item class="item1">
+            <div class="thumb1"></div>
+              <ion-thumbnail slot="start" class="thumb1">
+                <img alt="" [src]="newImage"/>
+              </ion-thumbnail>
+            
+              <ion-button fill="outline" class="button3" >
+                <label for="file-upload">Agregar Foto
+                <ion-icon slot="end" name="image-outline"></ion-icon>
+                </label>
+                  <input (change)="nImage($event)" id="file-upload" style="display:none" type="file" accept="image/*">
+                </ion-button>
+              
+               
+             </ion-item>
+             <div class="wrap-it">
+            <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label class="label3">Acepto Recibir alertas y avisos de COMESANO</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label class="label3">Acepto Recibir promociones de terceros</ion-label>
+      </ion-item>
+   </div>
+    
+            <div class="bottom-section">
+                  <ion-button class="button4" (click)="save()" >Guardar</ion-button>
+            </div>
+          </div>
+          </ion-card-content>
+        </ng-container>
+    </ion-card>
+    </div>
+    <div id="conditions">
+      
+    </div>
+            
+           
+    
+          
+      
+
+
+</ion-content>
